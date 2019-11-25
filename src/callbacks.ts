@@ -2,13 +2,7 @@ import { inspect } from 'util';
 import * as constants from './constants';
 import * as utils from './utils';
 
-import { getNamespace } from 'cls-hooked';
-const cls = getNamespace('vexera');
-
 export function transform(message: any) {
-  const eventID = cls.get('eventID');
-  if (eventID) message.event_id = eventID;
-
   for (const [alias, target] of Object.entries(constants.fieldAliases)) {
     if (Object.prototype.hasOwnProperty.call(message, alias)) {
       message[target] = message[alias];
