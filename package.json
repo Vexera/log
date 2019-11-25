@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/vexera/v5/log.git"
+    "url": "https://gitlab.com/vexera/log.git"
   },
   "files": [
     "lib/**/*",
