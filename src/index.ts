@@ -31,5 +31,5 @@ export const config = {
 // Detects tests and filter out everything
 if (process.env.NODE_ENV === 'test') graylog.setConfig({ filter: [() => false] });
 
-export { default as default } from './Module';
+export { default as Module } from './Module';
 export { constants };
