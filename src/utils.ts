@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { config } from './index';
 
 export function getDateString() {
@@ -20,4 +21,15 @@ export function replaceSensitive(message: any) {
       message[field] = message[field].split(text).join('[CENSORED]');
     }
   }
+}
+
+/**
+ * Like _.merge(), but will also merge arrays
+ */
+export function deepMerge(object: object, ...source: object[]) {
+  return _.mergeWith(object, ...source, (objValue: object, srcValue: any) => {
+    if (_.isArray(objValue)) {
+      return objValue.concat(srcValue);
+    }
+  });
 }

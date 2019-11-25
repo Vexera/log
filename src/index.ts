@@ -1,9 +1,10 @@
 import graylog from 'gelf-pro';
 import * as constants from './constants';
 import * as callbacks from './callbacks';
+import * as utils from './utils';
 
-export function setup(service: string, customConf?: Partial<graylog.Settings>) {
-  graylog.setConfig({
+export function setup(service: string, customConf: Partial<graylog.Settings> = {}) {
+  graylog.setConfig(utils.deepMerge({
     adapterName: 'udp',
     adapterOptions: {
       host: process.env.GRAYLOG_HOST || 'localhost',
@@ -12,8 +13,7 @@ export function setup(service: string, customConf?: Partial<graylog.Settings>) {
     fields: { service },
     transform: [callbacks.transform],
     broadcast: [callbacks.broadcast],
-    ...customConf,
-  });
+  }, customConf));
 }
 
 export const config = {
