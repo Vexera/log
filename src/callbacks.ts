@@ -31,7 +31,7 @@ export function broadcast(message: any) {
   delete message.service;
 
   console[level > 3 ? 'log' : 'error'](
-    `${utils.getDateString()} [${module || 'Worker'}/${constants.levels[level].toUpperCase()}]:`,
+    `${utils.getDateString()} [${module || '<none>'}/${constants.levels[level].toUpperCase()}]:`,
     (level <= 3 && full_message) ? full_message : short_message,
     Object.keys(message).length ? inspect(message, { breakLength: Infinity }) : '',
   );
