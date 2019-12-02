@@ -13,7 +13,7 @@ export function getDateString() {
 
 export function replaceSensitive(message: any) {
   for (const field of Object.keys(message)) {
-    if (typeof message[field] === 'object') replaceSensitive(message[field]);
+    if (typeof message[field] === 'object' && message[field] !== null) replaceSensitive(message[field]);
     if (typeof message[field] !== 'string') continue;
 
     for (const text of config.sensitive) {
