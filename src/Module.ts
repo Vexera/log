@@ -9,7 +9,7 @@ export default class Module {
   }
 
   public message(message: graylog.Message, level: levels, extra: any = {}) {
-    if (this.module && !extra.modules) {
+    if (this.module && !extra.module) {
       extra.module = this.module;
     }
 
