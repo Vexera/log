@@ -9,12 +9,3 @@ export enum levels {
   /* 7 */ debug,
   /* 8 */ trace,
 }
-
-export const fieldAliases = {
-  guildID: 'guild_id',
-  channelID: 'channel_id',
-  roleID: 'role_id',
-  userID: 'user_id',
-  caseID: 'case_id',
-  messageID: 'message_id',
-};

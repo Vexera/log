@@ -26,6 +26,7 @@ export const config = {
     caseID: 'case_id',
     messageID: 'message_id',
   } as { [alias: string]: string },
+  doNotBroadcastFields: [] as string[],
 };
 
 // Detects tests and filter out everything

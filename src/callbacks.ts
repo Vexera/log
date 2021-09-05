@@ -1,9 +1,10 @@
 import { inspect } from 'util';
-import * as constants from './constants';
+import { levels } from './constants';
+import { config } from './index';
 import * as utils from './utils';
 
 export function transform(message: any) {
-  for (const [alias, target] of Object.entries(constants.fieldAliases)) {
+  for (const [alias, target] of Object.entries(config.field_aliases)) {
     if (Object.prototype.hasOwnProperty.call(message, alias)) {
       message[target] = message[alias];
       delete message[alias];
@@ -30,8 +31,12 @@ export function broadcast(message: any) {
   delete message.module;
   delete message.service;
 
+  for (const field of config.doNotBroadcastFields) {
+    delete message[field];
+  }
+
   console[level > 3 ? 'log' : 'error'](
-    `${utils.getDateString()} [${module || '<none>'}/${constants.levels[level].toUpperCase()}]:`,
+    `${utils.getDateString()} [${module || '<none>'}/${levels[level].toUpperCase()}]:`,
     (level <= 3 && full_message) ? full_message : short_message,
     Object.keys(message).length ? inspect(message, { breakLength: Infinity }) : '',
   );
