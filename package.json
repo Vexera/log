@@ -8,7 +8,7 @@
     "test": "NODE_ENV=test tslint 'src/**/*.ts?(x)'",
     "build": "tsc",
     "prepare": "npm run build",
-    "prepublishOnly": "npm audit && npm test",
+    "prepublishOnly": "npm audit && npm test && npm run build",
     "preversion": "npm audit && npm test"
   },
   "repository": {
