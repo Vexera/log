@@ -27,7 +27,7 @@ export function transform(message: any) {
   }
 
   if (message.short_message instanceof Error) {
-    if (!message.full_message) message.full_message = message.short_message.stack;
+    if (!message.full_message) message.full_message = inspect(message.short_message);
     if (!message.short_message) message.short_message = message.short_message.message;
   }
 
