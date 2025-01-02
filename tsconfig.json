@@ -3,12 +3,12 @@
     "module": "commonjs",
     "declaration": true,
     "esModuleInterop": true,
-    "target": "es6",
+    "target": "es2022",
     "moduleResolution": "node",
     "sourceMap": true,
     "strict": true,
     "outDir": "lib"
   },
-  "lib": ["es2015"],
+  "lib": ["es2022"],
   "include": ["src", "typings"]
 }
