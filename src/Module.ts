@@ -14,6 +14,7 @@
  * If not, see <https://www.gnu.org/licenses/>.
  */
 import graylog from 'gelf-pro';
+import { inspect } from 'util';
 import { levels } from './constants';
 
 export default class Module {
@@ -28,8 +29,9 @@ export default class Module {
       extra.module = this.module;
     }
 
-    if (message instanceof Error && !extra.full_message) {
-      extra.full_message = message.stack;
+    if (message instanceof Error) {
+      if (!extra.full_message) extra.full_message = inspect(message);
+      if (!extra.short_message) extra.short_message = message.message;
     }
 
     graylog.message(message, level, extra);
